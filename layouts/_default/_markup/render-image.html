@@ -22,7 +22,7 @@
   {{- $fileDisk = (add "/static/" $file) }}
 {{ end }}
 
-<!-- {{ if fileExists $fileDisk }} -->
+{{ if fileExists $fileDisk }}
 
   {{- $img := imageConfig $fileDisk -}}{{/* image element (passed through imageConfig) */}}
 
@@ -66,6 +66,7 @@
     </picture>
   </figure>
 
-<!-- {{- else }}
-  {{- partial "image-error" (dict "fileWeb" $fileWeb "fileDisk" $fileDisk "bundle" $bundle) }}
-{{- end }} -->
+{{- else }}
+<img class="image_figure image_external" loading="lazy" src="{{ $file }}" alt="{{ $alt }}" {{ with $cap}} title="{{ $cap }}" {{ end }} />
+  <!-- {{- partial "image-error" (dict "fileWeb" $fileWeb "fileDisk" $fileDisk "bundle" $bundle) }} -->
+{{- end }}
